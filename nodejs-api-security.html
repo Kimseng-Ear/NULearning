@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en" id="root-element" class="light">
+
+<head>
+    <title>API Security | NU-Learning
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta property="og:image" content="images/og-logo-2bdf3a30.png">
+    <meta name="csrf-param" content="authenticity_token">
+    <meta name="csrf-token"
+        content="7C3UDvwCFFW2ZITFSMt1zAZrWzTCYFxYfQes7G-gupQDAaAXWEkAL9vbpxXdCOE8w0UzaqO76DeC6UWrQaHCuQ">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="images/icon.png" sizes="32x32">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#5bbad5">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/application-e5aea1fb.css" media="all" data-turbo-track="reload">
+    <link rel="stylesheet" href="css/main-148bfead.css" media="all" data-turbo-track="reload">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="js/88c85c7e3b5b4548a663b61da9beea2a.min.js" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        window.SENTRY_DSN = "https://6cc08494f58c45d0b78be7b6bea5d0cc@o572484.ingest.sentry.io/5721923"
+        window.currentUserSignedIn = "false"
+
+    </script>
+
+    <script src="js/main-c88eeddb.js" defer="defer" data-turbo-track="reload"></script>
+</head>
+
+<body class="h-full bg-gray-50 text-gray-600 dark:bg-gray-900 dark:text-gray-300">
+
+    <div data-controller="visibility" data-visibility-target="content" data-visibility-visible-value="false"
+        class="fixed inset-0 flex z-40 hidden lg:hidden off-canvas-menu" role="dialog" aria-modal="true">
+
+        <div data-visibility-target="content" data-action="click->visibility#off"
+            class="fixed inset-0 bg-gray-600 bg-opacity-75 dark:bg-black dark:bg-opacity-60 hidden" aria-hidden="true"
+            data-transition-enter="transition-opacity ease-linear duration-200"
+            data-transition-enter-start="transform opacity-0" data-transition-enter-end="transform opacity-100"
+            data-transition-leave="transition-opacity ease-linear duration-200"
+            data-transition-leave-start="transform opacity-100" data-transition-leave-end="transform opacity-0">
+        </div>
+
+        <div data-visibility-target="content"
+            class="relative flex-1 flex flex-col max-w-xs w-full bg-white focus:outline-none hidden dark:bg-gray-800"
+            data-transition-enter="transition ease-in-out duration-200 transform"
+            data-transition-enter-start="-translate-x-full" data-transition-enter-end="translate-x-0"
+            data-transition-leave="transition ease-in-out duration-200 transform"
+            data-transition-leave-start="translate-x-0" data-transition-leave-end="-translate-x-full">
+
+            <div data-visibility-target="content" class="absolute top-2 right-2 -mr-12 pt-3 hidden"
+                data-transition-enter="transition ease-in-out duration-200"
+                data-transition-enter-start="transform opacity-0" data-transition-enter-end="transform opacity-100"
+                data-transition-leave="transition ease-in duration-200"
+                data-transition-leave-start="transform opacity-100" data-transition-leave-end="transform opacity-0">
+            </div>
+
+            <div class="flex-1 h-0 pt-3 pb-4 overflow-y-auto">
+                <div class="flex-shrink-0 flex items-center px-4">
+                    <a aria-label="Return back home" href="home.html">
+                        <img src="images/logo-nu.png" class="logo" alt="">
+                    </a>
+                </div>
+                <nav aria-label="Sidebar" class="mt-3">
+                    <div class="px-2 space-y-1">
+                        <a class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-gray-200 dark:hover:bg-gray-700/60 "
+                            data-test-id="nav-home" data-turbo-method="get" href="home.html">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                class="w-6 h-6 text-gray-400 group-hover:text-gray-500 dark:text-gray-200 dark:group-hover:text-gray-200 mr-4 h-6 w-6"
+                                role="img" aria-labelledby="an2fu94vmqnbtlc403xdq6majnie2wc9">
+                                <title id="an2fu94vmqnbtlc403xdq6majnie2wc9">Home icon</title>
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25">
+                                </path>
+                            </svg>
+
+                            Home
+                        </a>
+                        <a class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-gray-200 dark:hover:bg-gray-700/60 "
+                            data-test-id="nav-all-paths" data-turbo-method="get" href="allpaths.html">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                class="w-6 h-6 text-gray-400 group-hover:text-gray-500 dark:text-gray-200 dark:group-hover:text-gray-200 mr-4 h-6 w-6"
+                                role="img" aria-labelledby="arrnnf9s7v6wga91yfpr512jk0oijldg">
+                                <title id="arrnnf9s7v6wga91yfpr512jk0oijldg">All Paths icon</title>
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z">
+                                </path>
+                            </svg>
+
+                            All Paths
+                        </a>
+                        <a class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-gray-200 dark:hover:bg-gray-700/60 "
+                            data-test-id="nav-about" data-turbo-method="get" href="about.html">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                class="w-6 h-6 text-gray-400 group-hover:text-gray-500 dark:text-gray-200 dark:group-hover:text-gray-200 mr-4 h-6 w-6"
+                                role="img" aria-labelledby="akwtb5q45c4uzp3355rk4wpsyov539bm">
+                                <title id="akwtb5q45c4uzp3355rk4wpsyov539bm">About icon</title>
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z">
+                                </path>
+                            </svg>
+
+                            About
+                        </a>
+
+                    </div>
+
+                    <hr class="border-t border-gray-200 my-4" aria-hidden="true">
+
+                    <div class="px-2 space-y-1">
+                        <a class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-gray-200 dark:hover:bg-gray-700/60 "
+                            data-test-id="nav-sign-in" data-turbo-method="get" href="sign-in.html">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                class="w-6 h-6 text-gray-400 group-hover:text-gray-500 dark:text-gray-200 dark:group-hover:text-gray-200 mr-4 h-6 w-6"
+                                role="img" aria-labelledby="amik7lnag3yb5uonoayhkfruyyrid94n">
+                                <title id="amik7lnag3yb5uonoayhkfruyyrid94n">Sign in icon</title>
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75">
+                                </path>
+                            </svg>
+
+                            Sign in
+                        </a>
+
+                        <a class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-gray-200 dark:hover:bg-gray-700/60 "
+                            data-test-id="nav-sign-up" data-turbo-method="get" href="sign-up.html">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                class="w-6 h-6 text-gray-400 group-hover:text-gray-500 dark:text-gray-200 dark:group-hover:text-gray-200 mr-4 h-6 w-6"
+                                role="img" aria-labelledby="awq7eb9oagh1uga0tfjnzxvjsa6edx5">
+                                <title id="awq7eb9oagh1uga0tfjnzxvjsa6edx5">Get started icon</title>
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z">
+                                </path>
+                            </svg>
+
+                            Create Account
+                        </a>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="flex-shrink-0 w-14" aria-hidden="true">
+            <!-- Force sidebar to shrink to fit close icon -->
+        </div>
+    </div>
+
+
+    <nav class="border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-800 ">
+        <div data-aos="fade-down" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+            <div class="flex justify-between">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a aria-label="Return back home" href="home.html">
+                            <img src="images/logo-nu.png" class="logo" alt="">
+                        </a>
+                    </div>
+
+                </div>
+                <div class="hidden md:ml-6 md:flex sm:items-center">
+                    <div class="hidden md:ml-6 md:flex sm:space-x-8">
+                        <a class=" text-sm border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1  border-b-2 font-medium "
+                            data-test-id="nav-all-paths" data-turbo-method="get" href="home.html">Home</a>
+
+                        <a class=" text-sm border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1  border-b-2 font-medium "
+                            data-test-id="nav-all-paths" data-turbo-method="get" href="allpaths.html">All
+                            Paths</a>
+
+                        <a class=" text-sm border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1  border-b-2 font-medium "
+                            data-test-id="nav-about" data-turbo-method="get" href="about.html">About</a>
+
+                        <a class=" text-sm border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1  border-b-2 font-medium "
+                            data-test-id="nav-sign-in" data-turbo-method="get" href="sign-in.html">Sign in</a>
+
+                        <a class="button button--primary md:px-2 md:py-2 lg:px-4 text-sm" data-test-id="nav-sign-up"
+                            href="sign-up.html">Create Account</a>
+                    </div>
+
+                </div>
+
+                <div class="-mr-2 flex items-center md:hidden" data-controller="open-menu"
+                    data-open-menu-visibility-outlet=".off-canvas-menu">
+                    <button type="button" data-action="open-menu#open"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gold-500"
+                        aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open mobile menu</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" role="img"
+                            aria-labelledby="aj8urfvfcicov3e6kl3vktm0r4k4tsyk" class="block h-6 w-6">
+                            <title id="aj8urfvfcicov3e6kl3vktm0r4k4tsyk">Open mobile menu</title>
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5">
+                            </path>
+                        </svg>
+
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="flash-messages">
+
+    </div>
+
+    <turbo-frame id="modal"></turbo-frame>
+
+
+    <div class="bg-white dark:bg-gray-900">
+        <div class="page-container pb-10">
+
+            <header class="mb-16 grid grid-cols-12">
+                <div
+                    class="flex space-y-4 items-center flex-col col-span-full justify-center xl:space-y-0 xl:space-x-4 xl:flex-row xl:justify-start xl:col-start-2">
+                    <a href="">
+                        <div class="shadow-md dark:shadow-none rounded-full flex w-24 h-24 sm:w-28 sm:h-28"
+                            data-test-id="default-badge">
+                            <img class="p-2.5" src="images/nodejs-svgrepo-com.svg">
+                        </div>
+                    </a>
+
+                    <div class="text-center xl:text-left">
+                        <div class="flex flex-col xl:flex-row items-center gap-0 sm:gap-3">
+                            <h1 class="text-2xl font-semibold text-gray-800 dark:text-gray-200"
+                                data-test-id="lesson-title-header">
+                                API Security
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+
+            <main class="grid grid-cols-12 gap-x-6" data-controller="lesson-toc diagramming"
+                data-lesson-toc-item-classes-value="no-underline hover:text-gray-800 text-sm dark:hover:text-gray-300">
+                <article class="col-span-full xl:col-span-7 xl:col-start-2 xl:max-w-prose">
+                    <div class="max-w-prose mx-auto xl:mx-0 pb-6">
+                        <div class="lesson-content prose prose-gray prose-a:text-blue-800 visited:prose-a:text-purple-800 prose-code:bg-gray-100 prose-code:p-1 prose-code:font-normal dark:prose-a:text-blue-300 dark:visited:prose-a:text-purple-300 dark:prose-code:bg-gray-700/40 prose-code:rounded-md break-words line-numbers dark:prose-invert dark:antialiased prose-pre:rounded-xl prose-pre:bg-slate-800 prose-pre:shadow-lg dark:prose-pre:bg-slate-800/70 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-slate-300/10"
+                            data-controller="syntax-highlighting" data-lesson-toc-target="lessonContent">
+
+                            <!-- Introduction -->
+                            <section data-title="introduction">
+                                <h3 id="introduction"><a href="#introduction" class="anchor-link">Introduction: API
+                                        Security in NodeJS</a></h3>
+                                <p>Welcome to the NU-Learning course on <strong>API Security</strong> in NodeJS. In this
+                                    lesson, we will explore the critical aspects of securing your APIs to protect
+                                    sensitive data and maintain user trust. As applications increasingly rely on APIs to
+                                    communicate and exchange data, securing these interfaces is paramount.</p>
+
+                                <p>By the end of this lesson, you will gain insights into various security measures,
+                                    including authentication, authorization, data validation, and best practices for
+                                    building secure APIs using NodeJS and Express.</p>
+                            </section>
+
+                            <!-- Understanding API Security -->
+                            <section data-title="understanding-api-security">
+                                <h3 id="understanding-api-security"><a href="#understanding-api-security"
+                                        class="anchor-link">Understanding API Security</a></h3>
+                                <p>API security refers to the strategies and practices used to protect APIs from threats
+                                    and vulnerabilities. It encompasses various measures that ensure only authorized
+                                    users can access specific resources while safeguarding sensitive data from
+                                    unauthorized access.</p>
+                                <p>Common threats to API security include:</p>
+                                <ul>
+                                    <li><strong>Data Breaches:</strong> Unauthorized access to sensitive information.
+                                    </li>
+                                    <li><strong>Injection Attacks:</strong> Attacks where malicious input is sent to the
+                                        API.</li>
+                                    <li><strong>Denial of Service (DoS):</strong> Overwhelming the API with requests,
+                                        causing it to fail.</li>
+                                </ul>
+                            </section>
+
+                            <!-- Authentication Methods -->
+                            <section data-title="authentication-methods">
+                                <h3 id="authentication-methods"><a href="#authentication-methods"
+                                        class="anchor-link">Authentication Methods</a></h3>
+                                <p>Authentication is the process of verifying the identity of a user or application.
+                                    There are several methods to authenticate API requests:</p>
+                                <ul>
+                                    <li><strong>API Keys:</strong> Simple tokens that are passed with requests. While
+                                        easy to implement, they can be vulnerable if not properly secured.</li>
+                                    <li><strong>OAuth 2.0:</strong> A more secure and flexible authentication standard
+                                        allowing third-party applications to access user data without sharing passwords.
+                                    </li>
+                                    <li><strong>JWT (JSON Web Tokens):</strong> Compact tokens that can securely
+                                        transmit information between parties. JWTs are signed, ensuring that the
+                                        information is verified and trusted.</li>
+                                </ul>
+                            </section>
+
+                            <!-- Implementing Authentication in NodeJS -->
+                            <section data-title="implementing-authentication-in-nodejs">
+                                <h3 id="implementing-authentication-in-nodejs"><a
+                                        href="#implementing-authentication-in-nodejs" class="anchor-link">Implementing
+                                        Authentication in NodeJS</a></h3>
+                                <p>To implement authentication, we can use the <code>jsonwebtoken</code> package for JWT
+                                    authentication. First, install the package:</p>
+                                <pre class="bg-blue"><code>npm install jsonwebtoken</code></pre>
+                                <p>Next, create a route to authenticate users and issue a JWT:</p>
+                                <pre class="bg-blue">
+      <code>const jwt = require('jsonwebtoken');
+      
+      // Example authentication route
+      app.post('/login', (req, res) =&gt; {
+          const { username, password } = req.body;
+          // Validate user credentials (mocked here)
+          if (username === 'user' && password === 'password') {
+              const token = jwt.sign({ username }, 'your_secret_key', { expiresIn: '1h' });
+              return res.json({ token });
+          }
+          res.status(401).send('Unauthorized');
+      });</code></pre>
+                            </section>
+
+                            <!-- Authorization -->
+                            <section data-title="authorization">
+                                <h3 id="authorization"><a href="#authorization" class="anchor-link">Authorization</a>
+                                </h3>
+                                <p>Authorization determines whether a user has the necessary permissions to access
+                                    certain resources or perform specific actions. After authenticating users, implement
+                                    authorization checks to ensure they can only access what they are permitted to.</p>
+                                <p>Example of authorization middleware:</p>
+                                <pre class="bg-blue">
+      <code>function authorize(req, res, next) {
+          const token = req.headers['authorization'];
+          if (!token) return res.status(403).send('Forbidden');
+      
+          jwt.verify(token, 'your_secret_key', (err, decoded) =&gt; {
+              if (err) return res.status(401).send('Unauthorized');
+              req.user = decoded;
+              next();
+          });
+      }
+      
+      // Protect a route with authorization middleware
+      app.get('/protected', authorize, (req, res) =&gt; {
+          res.send('This is a protected route.');
+      });</code></pre>
+                            </section>
+
+                            <!-- Data Validation -->
+                            <section data-title="data-validation">
+                                <h3 id="data-validation"><a href="#data-validation" class="anchor-link">Data
+                                        Validation</a></h3>
+                                <p>Data validation is crucial to prevent injection attacks and ensure that the API only
+                                    processes valid input. Use libraries like <code>express-validator</code> to validate
+                                    incoming data:</p>
+                                <pre class="bg-blue"><code>npm install express-validator</code></pre>
+                                <p>Example of validating input data:</p>
+                                <pre class="bg-blue">
+      <code>const { body, validationResult } = require('express-validator');
+      
+      app.post('/items', 
+          body('name').isString().notEmpty(),
+          (req, res) =&gt; {
+              const errors = validationResult(req);
+              if (!errors.isEmpty()) {
+                  return res.status(400).json({ errors: errors.array() });
+              }
+              // Logic to save the item
+              res.status(201).send('Item created');
+          }
+      );</code></pre>
+                            </section>
+
+                            <!-- Rate Limiting -->
+                            <section data-title="rate-limiting">
+                                <h3 id="rate-limiting"><a href="#rate-limiting" class="anchor-link">Rate Limiting</a>
+                                </h3>
+                                <p>Implement rate limiting to protect your API from DoS attacks and to ensure fair use
+                                    among users. You can use the <code>express-rate-limit</code> package:</p>
+                                <pre class="bg-blue"><code>npm install express-rate-limit</code></pre>
+                                <p>Example of applying rate limiting:</p>
+                                <pre class="bg-blue">
+      <code>const rateLimit = require('express-rate-limit');
+      
+      const limiter = rateLimit({
+          windowMs: 15 * 60 * 1000, // 15 minutes
+          max: 100 // limit each IP to 100 requests per windowMs
+      });
+      
+      app.use(limiter);</code></pre>
+                            </section>
+
+                            <!-- Best Practices for API Security -->
+                            <section data-title="best-practices-for-api-security">
+                                <h3 id="best-practices-for-api-security"><a href="#best-practices-for-api-security"
+                                        class="anchor-link">Best Practices for API Security</a></h3>
+                                <p>To ensure robust API security, follow these best practices:</p>
+                                <ul>
+                                    <li><strong>Use HTTPS:</strong> Always encrypt data in transit using HTTPS to
+                                        protect sensitive information from eavesdropping.</li>
+                                    <li><strong>Implement Proper Authentication and Authorization:</strong> Use strong
+                                        methods for authentication and ensure proper authorization checks.</li>
+                                    <li><strong>Validate Input:</strong> Always validate and sanitize incoming data to
+                                        prevent injection attacks.</li>
+                                    <li><strong>Log API Activity:</strong> Keep logs of API requests and responses to
+                                        help monitor and detect suspicious activities.</li>
+                                    <li><strong>Regularly Update Dependencies:</strong> Keep your dependencies updated
+                                        to mitigate known vulnerabilities.</li>
+                                    <li><strong>Test for Vulnerabilities:</strong> Regularly conduct security audits and
+                                        testing to identify and address vulnerabilities.</li>
+                                </ul>
+                            </section>
+
+                            <!-- Conclusion -->
+                            <section data-title="conclusion">
+                                <h3 id="conclusion"><a href="#conclusion" class="anchor-link">Conclusion</a></h3>
+                                <p>API security is an essential aspect of modern web development. By implementing the
+                                    security measures discussed in this lesson, you can significantly reduce the risks
+                                    associated with API vulnerabilities. Remember, security is an ongoing process that
+                                    requires vigilance and regular updates.</p>
+                                <p>In the next lesson, we will explore API versioning and how to manage changes
+                                    effectively in your API. Thank you for joining this lesson!</p>
+                            </section>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <a href="/Project-Website-NU-Learning/nodejs-api-basics.html" style="margin: 0 20px;">
+                          <button style="padding: 15px 20px; color: white; background-color:  #002F75; border-radius: 10px;"><i class="bi bi-arrow-left-short"></i>Back</button>
+                        </a>
+                        
+                      </div>
+                </article>
+                <aside class="col-span-3 col-start-10 justify-self-end hidden xl:block">
+                    <div class="sticky top-12 pb-20">
+                        <h4 class="text-md pb-4 text-gray-700 dark:text-gray-300">Lesson contents</h4>
+                        <ul class="flex flex-col text-gray-500 dark:text-gray-400" data-lesson-toc-target="toc"></ul>
+                    </div>
+                </aside>
+            </main>
+
+        </div>
+    </div>
+
+
+    <footer class="bg-white dark:bg-gray-900" aria-labelledby="footer-heading">
+        <h2 id="footer-heading" class="sr-only">Footer</h2>
+        <div class="mx-auto max-w-7xl px-6 pb-8 pt-8 sm:pt-12 lg:px-8">
+            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+
+                <div class="space-y-6">
+                    <a aria-label="Return back home" href="home.html">
+                        <img src="images/logo-nu.png" class="logo" alt="">
+                    </a>
+                    <p class="text-sm leading-6 text-gray-600 dark:text-gray-300">
+                        Norton University is the first private university in Cambodia, established on December 2, 1996.
+                        The Graduate
+                        School started in 2001 in affiliation with the Ateneo de Zamboanga University of the
+                        Philippines.
+                    </p>
+
+                    <div class="flex space-x-6">
+
+                        <a class="text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400"
+                            href="https://www.facebook.com/nortonuniversitycambodia/">
+                            <span class="sr-only">Facebook</span>
+                            <div class="icon-container facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                        </a>
+
+                        <a class="text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400"
+                            href="https://t.me/+pZTGhxGVBIE4YWU1">
+                            <span class="sr-only">Telegram</span>
+                            <div class="icon-container telegram">
+                                <i class="fab fa-telegram-plane"></i>
+                            </div>
+                        </a>
+
+                        <a class="text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400"
+                            href="https://mail.google.com/mail/?view=cm&fs=1&to=info@norton-u.com">
+                            <span class="sr-only">Gmail</span>
+                            <div class="icon-container gmail">
+                                <i class="fab fa-google"></i>
+                            </div>
+                        </a>
+
+                        <a class="text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400"
+                            href="https://norton-u.com" target="_blank" rel="noopener noreferrer">
+                            <span class="sr-only">Website</span>
+                            <div class="icon-container website">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                        </a>
+
+
+                    </div>
+                </div>
+
+                <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">About us</h3>
+                            <ul role="list" class="mt-4 space-y-3">
+
+                                <li><a class="text-sm leading-6 text-blue" href="faq.html">FAQ</a></li>
+                                <li><a class="text-sm leading-6 text-blue" href="team.html">Team</a></li>
+                                <li><a class="text-sm leading-6 text-blue" href="about.html">About</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-10 md:mt-0">
+                            <h3 class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Contact Us</h3>
+                            <ul role="list" class="mt-4 space-y-3">
+                                <li>Tel:<a class="text-sm leading-6 text-blue" href="tel:+85523432075"> 023 432
+                                        075</a></li>
+                                <li>Mobile:<a class="text-sm leading-6 text-blue" href="tel:+85593888359">
+                                        093 888 359</a></li>
+                                <li>Address:<a class="text-sm leading-6 text-blue"
+                                        href="https://goo.gl/maps/zHaQ2u3CJqhawSHq9"> St. Keo
+                                        Chenda, Phnom Penh, Cambodia</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Quick Links</h3>
+
+
+                            <ul role="list" class="mt-4 space-y-3">
+                                <li><a class="text-sm leading-6 text-blue"
+                                        href="foundations-course.html">Foundations</a></li>
+                                <li><a class="text-sm leading-6 text-blue" href="full-stack-javascript.html">Full Stack
+                                        JavaScript</a>
+                                </li>
+                                <li><a class="text-sm leading-6 text-blue" href="full-stack-ruby-on-rails.html">Full
+                                        Stack Ruby on
+                                        Rails</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-10 md:mt-0">
+                            <h3 class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Get Start</h3>
+                            <ul role="list" class="mt-4 space-y-3">
+                                <li><a class="text-sm leading-6 text-blue" data-test-id="faq-link"
+                                        href="sign-in.html">Access
+                                        Account</a></li>
+                                <li><a class="text-sm leading-6 text-blue" data-test-id="faq-link"
+                                        href="sign-up.html">Create
+                                        Account</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-16 border-t border-gray-900/10 dark:border-white/10 pt-8 sm:mt-20 lg:mt-24">
+                <p class="text-xs leading-5 text-gray-600 dark:text-gray-300">© 2024 NU-Learning. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init({
+    duration: 800,
+    delay: 20,
+    });
+</script>
+</html>
